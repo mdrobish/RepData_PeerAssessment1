@@ -70,6 +70,7 @@ by_date <- group_by(activity_df, date)
 date_sum <- summarize(by_date, total=sum(steps))
 ```
 2.  If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day
+![plot1.png](https://github.com/mdrobish/RepData_PeerAssessment1/blob/master/plot1.png)
 ```{r echo = TRUE}
 hist(date_sum$total, 
      breaks=seq(from=0, to=25000, by=1250),
@@ -88,6 +89,7 @@ median(date_sum$total, na.rm=TRUE)
 ## What is the average daily activity pattern?
 
 1.  Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+![plot2.png](https://github.com/mdrobish/RepData_PeerAssessment1/blob/master/plot2.png)
 ```{r echo = TRUE}
 by_interval <- group_by(activity_df, interval)
 interval_sum <- summarize(by_interval, average=mean(steps, na.rm = TRUE))
@@ -132,7 +134,7 @@ activity_df[na_pos, "steps"] <- mean_vec
 ```
 
 4.  Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
-
+![plot3.png](https://github.com/mdrobish/RepData_PeerAssessment1/blob/master/plot3png)
 ```{r echo = TRUE}
 by_date <- group_by(activity_df, date)
 date_sum <- summarize(by_date, total=sum(steps))
@@ -164,7 +166,7 @@ activity_df <- mutate(activity_df, dayOfWeek=weekdays(date),
 ```
 
 2.  Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
-
+![plot4.png](https://github.com/mdrobish/RepData_PeerAssessment1/blob/master/plot4.png)
 ```{r echo = TRUE}
 library(lattice)
 by_interval <- group_by(activity_df, interval, daytype)
